@@ -29,7 +29,7 @@ function EmployeesContorl(data){
             },
             {
                 caption: "",
-                dataField: "DapartmentId",
+                dataField: "DepartmentId",
                 visible: false
             },
             {
@@ -43,7 +43,15 @@ function EmployeesContorl(data){
                 dataField: "EmployeeId",
                 visible: false
             }
-        ]
+        ],
+        onRowClick: function(e) {
+            if(e.rowType === "data") {
+                EmpId = dataGrid.cellValue(e.rowIndex, "EmployeeId");
+                $("input#NameTxt").val(dataGrid.cellValue(e.rowIndex, "EmployeeName"));
+                $("input#SalaryTxt").val(dataGrid.cellValue(e.rowIndex, "EmployeeSalary"));
+                $("input#DepTxt").val(dataGrid.cellValue(e.rowIndex, "DepartmentId"));
+            }
+        }
     }).dxDataGrid("instance");
     
     $("#EmployeesExpand").dxCheckBox({

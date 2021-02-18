@@ -13,11 +13,17 @@
     <link rel="stylesheet" type="text/css" href="./stylesheets/style-slider.css" />
     <script src="./javascripts/jquery.search_list.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="./stylesheets/devex.css" />
+    <script src="./javascripts/test.js"></script>
+    <script src="./javascripts/spin.js"></script>
     <script src="./javascripts/EmployeeData.js"></script>
-    <script type="text/javascript">$(document).ready(function(){
+    <script type="text/javascript">
+
+        var EmpId = 0;
+        $(document).ready(function(){
         httpRequestGet(
                         'Employees',
-                        'https://' + window.location.host + '/' + 'Employees');
+                        'https://' + window.location.host + '/Employees/' + 'GetInfo');
+        //EmployeesContorl(test_data);
 
 	});</script>
 </head>
@@ -32,5 +38,14 @@
             </div>
         </div>
     </div>
+    <form id="form_for_fiz">
+            <p>type Info add, edit or delete </p>
+            <label>Name</label><input id="NameTxt" required type="text" size="20" />
+            <label>Salary</label><input id="SalaryTxt" required type="text" size="20" />
+            <label>DepartmentId</label><input id="DepTxt" required type="text" size="20" />
+            <input type="button" id="save_btn" value="add" onclick="Add()" />
+            <input type="button" id="edit_btn" value="edit" onclick="Edit()" />
+            <input type="button" id="delete_btn" value="delete" onclick="Delete()"/>
+    </form>
 </body>
 </html>
